@@ -2,11 +2,11 @@
 
 *You put your preloader in, you take your preloader out, You put your preloader in, and you shake it all about...*
 
-This addon allows you to add files directly to the index.html on the initial build, then removes them from the DOM once your app has loaded. Useful for adding a preloading screen before the initial app is downloaded.
+This addon allows you to render files directly in to the index.html on the initial build, then removes them from the DOM once your app has loaded. Useful for adding a preloading screen before the initial app is downloaded.
 
 ## Install
 ```
-npm install --save-dev ember-preloader
+ember install ember-preloader
 ```
 
 ## Usage
