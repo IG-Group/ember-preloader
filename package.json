@@ -1,6 +1,6 @@
 {
   "name": "ember-preloader",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A small preloader for Ember.js",
   "keywords": [
     "ember-addon",
