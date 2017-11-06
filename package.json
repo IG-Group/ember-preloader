@@ -1,12 +1,15 @@
 {
   "name": "ember-preloader",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "A small preloader for Ember.js",
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "html",
+    "css",
+    "inline"
   ],
   "license": "MIT",
-  "author": "",
+  "author": "Declan Ramsay <declandr@gmail.com> (https://declanramsay.co.uk)",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -18,7 +21,7 @@
     "test": "ember try:each"
   },
   "dependencies": {
-    "ember-cli-babel": "^6.6.0"
+    "ember-cli-babel": "^6.8.0"
   },
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.5",
@@ -38,6 +41,7 @@
     "ember-load-initializers": "^1.0.0",
     "ember-resolver": "^4.0.0",
     "ember-source": "~2.16.0",
+    "ember-sinon-qunit": "^2.0.0",
     "loader.js": "^4.2.3"
   },
   "engines": {

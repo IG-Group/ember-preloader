@@ -1,26 +1,72 @@
 # ember-preloader
 
-This README outlines the details of collaborating on this Ember addon.
+*You put your preloader in, you take your preloader out, You put your preloader in, and you shake it all about...*
 
-## Installation
+This addon allows you to add files directly to the index.html on the initial build, then removes them from the DOM once your app has loaded. Useful for adding a preloading screen before the initial app is downloaded.
 
-* `git clone <repository-url>` this repository
-* `cd ember-preloader`
-* `npm install`
+## Install
+```
+npm install --save-dev ember-preloader
+```
 
-## Running
+## Usage
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+The addon leverages the `contentFor` helper. In your app's **ember-cli-build.js** define your options hash, either using the existing `contentFor` hooks or your own:
 
-## Running Tests
+```js
+var app = new EmberApp(defaults, {
+  preloader: {
+    head: 'preload.css',
+    body: 'preload.html'
+    'custom-hook': 'preload.js',
+    'custom-hook2': 'preload2.js'
+  }
+});
+```
 
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+If you've used custom hooks, add them to your **index.html** file:
 
-## Building
+```hbs
+{{content-for 'custom-hook'}}
+{{content-for 'custom-hook2'}}
+```
 
-* `ember build`
+Finally, import the mixin into your application route:
 
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+```js
+import PreloaderMixin from 'ember-preloader/mixins/preloader';
+export default Route.extend(PreloaderMixin, {});
+```
+
+## Example
+
+ember-cli-build.js:
+
+```js
+var app = new EmberApp(defaults, {
+  preloader: {
+    head: 'preload.css',
+    body: 'preload.html',
+    'body-footer': 'preload.js',
+  }
+});
+```
+
+Output:
+```html
+<style data-preloader>
+  ... preload.css content ...
+</style>
+
+...
+
+<div data-preloader>
+  ... preload.html content ...
+</div>
+
+...
+
+<script data-preloader>
+  ... preload.js content ... 
+</script>
+```
