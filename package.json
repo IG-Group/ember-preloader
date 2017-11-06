@@ -9,12 +9,12 @@
     "inline"
   ],
   "license": "MIT",
-  "author": "Declan Ramsay <declandr@gmail.com> (https://declanramsay.co.uk)",
+  "author": "Declan Ramsay <declandr@gmail.com>",
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
-  "repository": "",
+  "repository": "https://github.com/IG-Group/ember-preloader",
   "scripts": {
     "build": "ember build",
     "start": "ember server",
