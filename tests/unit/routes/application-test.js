@@ -1,15 +1,19 @@
-import Ember from 'ember';
-import { moduleFor } from 'ember-qunit';
-import test from 'ember-sinon-qunit/test-support/test';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
+import sinon from 'sinon';
 
-moduleFor('route:application', 'Unit | Route | Application');
+module('Unit | Route | application', function(hooks) {
+  setupTest(hooks);
 
-test('Application calls preloader on afterModel', function(assert) {
-  let route = this.subject();
-  let stub = this.stub(route, 'removePreloader');
+  test('Application calls removePreloader on afterModel', function(assert) {
+    assert.expect(0);
 
-  assert.ok(stub.notCalled, 'removePreloader not called straight away');
+    const route = this.owner.lookup('route:application');
+    const stub = sinon.stub(route, 'removePreloader');
+    sinon.assert.notCalled(stub);
 
-  route.afterModel();
-  Ember.run.later(() => assert.ok(stub.calledOnce, 'removePreloader called once'));
+    route.afterModel();
+    sinon.assert.calledOnce(stub);
+  });
+
 });
