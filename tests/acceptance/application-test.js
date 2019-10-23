@@ -1,16 +1,17 @@
-import $ from 'jquery';
-import { test } from 'qunit';
-import moduleForAcceptance from '../../tests/helpers/module-for-acceptance';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
+import { visit } from '@ember/test-helpers';
 
-moduleForAcceptance('Acceptance | application');
+module('Acceptance | application', function(hooks) {
+  setupApplicationTest(hooks);
 
-test('visiting /', function(assert) {
-  let pre = $('[data-preloader]');
-  assert.equal(pre.length, 3, 'all elements are present initially')
-  visit('/');
+  test('visiting /', async function(assert) {
+    let preloaderEls = document.querySelectorAll('[data-preloader]');
+    assert.equal(preloaderEls.length, 3, 'all elements are present initially')
 
-  andThen(function() {
-    pre = $('[data-preloader]');
-    assert.equal(pre.length, 0, 'all elements are removed');
+    await visit('/');
+    preloaderEls = document.querySelectorAll('[data-preloader]');
+    assert.equal(preloaderEls.length, 0, 'all elements are removed');
   });
+
 });
